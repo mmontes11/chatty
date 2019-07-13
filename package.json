@@ -35,8 +35,8 @@
     "boilerplate"
   ],
   "dependencies": {
-    "apollo-server": "^2.2.3",
-    "apollo-server-express": "^2.2.3",
+    "apollo-server": "^2.6.9",
+    "apollo-server-express": "^2.6.9",
     "bluebird": "^3.4.7",
     "body-parser": "^1.18.3",
     "cors": "2.8.1",
@@ -45,6 +45,8 @@
     "express": "^4.16.4",
     "express-jwt": "^5.3.1",
     "express-winston": "^3.0.0",
+    "graphql": "^14.4.2",
+    "graphql-resolvers": "^0.3.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.2.0",
     "winston": "^3.0.0"

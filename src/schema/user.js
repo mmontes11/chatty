@@ -1,7 +1,7 @@
 import { gql } from "apollo-server-express";
 
 export default gql`
-  type Query {
+  extend type Query {
     me: User
     user(id: ID!): User
     users: [User!]
@@ -10,5 +10,6 @@ export default gql`
   type User {
     id: ID!
     username: String!
+    messages: [Message!]
   }
 `;

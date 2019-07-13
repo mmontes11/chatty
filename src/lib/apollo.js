@@ -1,10 +1,10 @@
 import { ApolloServer } from "apollo-server-express";
-import schema from "../schema";
+import schemas from "../schemas";
 import resolvers from "../resolvers";
 import { me } from "../constants/users";
 
 const server = new ApolloServer({
-  typeDefs: schema,
+  typeDefs: schemas,
   resolvers,
   context: {
     me,

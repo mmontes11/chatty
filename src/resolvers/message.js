@@ -1,12 +1,9 @@
-import messages from "../constants/messages";
-import users from "../constants/users";
-
 export default {
   Query: {
-    messages: () => Object.values(messages),
-    message: (parent, { id }) => messages[id],
+    messages: async (parent, args, { models: { Message } }) => Message.find(),
+    message: async (parent, { id }, { models: { Message } }) => Message.findById(id),
   },
   Message: {
-    user: ({ userId }) => users[userId],
+    user: async ({ userId }, args, { models: { User } }) => User.findById(userId),
   },
 };

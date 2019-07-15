@@ -15,7 +15,7 @@ export default {
         await message.remove();
         return true;
       }
-      return false;
+      throw new Error("Message not found");
     },
   },
   Message: {

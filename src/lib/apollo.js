@@ -2,6 +2,7 @@ import { ApolloServer } from "apollo-server-express";
 import schema from "../schema";
 import resolvers from "../resolvers";
 import models from "../models";
+import config from "../config";
 
 const server = new ApolloServer({
   typeDefs: schema,
@@ -12,6 +13,7 @@ const server = new ApolloServer({
     return {
       models,
       me,
+      secret: config.jwtSecret,
     };
   },
 });

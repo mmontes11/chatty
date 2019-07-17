@@ -1,3 +1,5 @@
+import { combineResolvers } from "graphql-resolvers";
+import { isAuth, isMessageOwner } from "./authorization";
 import { toCursorHash, fromCursorHash } from "../helpers/cursor";
 
 export default {
@@ -24,19 +26,20 @@ export default {
     message: async (parent, { id }, { models: { Message } }) => Message.findById(id),
   },
   Mutation: {
-    createMessage: async (parent, { text }, { models: { Message }, me: { id } }) =>
+    createMessage: combineResolvers(isAuth, async (parent, { text }, { models: { Message }, me: { id } }) =>
       Message.create({
         text,
         userId: id,
       }),
-    deleteMessage: async (parent, { id }, { models: { Message } }) => {
+    ),
+    deleteMessage: combineResolvers(isMessageOwner, async (parent, { id }, { models: { Message } }) => {
       const message = await Message.findById(id);
       if (message) {
         await message.remove();
         return true;
       }
       throw new Error("Message not found");
-    },
+    }),
   },
   Message: {
     user: async ({ userId }, args, { models: { User } }) => User.findById(userId),

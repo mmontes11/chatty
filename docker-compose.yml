@@ -1,0 +1,14 @@
+version: '3'
+services:
+  server:
+    build: .
+    env_file: .env
+    ports:
+      - "${NODE_PORT}:${NODE_PORT}"
+    links:
+      - mongo
+  mongo:
+    image: mongo
+    env_file: .env
+    expose:
+      - ${MONGO_PORT}

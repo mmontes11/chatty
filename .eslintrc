@@ -3,8 +3,5 @@
       "mongo": true
     },
     "extends": ["mmontes11-node"],
-    "rules": {
-      "no-param-reassign": 0
-    }
   }
   

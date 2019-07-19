@@ -8,7 +8,7 @@ export const isMessageOwner = combineResolvers(isAuth, async (parent, { id }, { 
   if (!message) {
     throw new UserInputError("Message not found");
   }
-  if (message.userId != me.id) {
+  if (String(message.userId) !== String(me.id)) {
     throw new ForbiddenError("Not authenticated as owner");
   }
   return skip;

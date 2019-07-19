@@ -29,6 +29,8 @@ Image available on [Docker Hub](https://hub.docker.com/r/mmontes11/apollo-expres
 
 ### Production
 
-```bash
-$ docker-compose up -d
-```
+1. Create a `.env` with the variables used below:
+- [docker-compose.yml](https://github.com/mmontes11/apollo-express-mongo-boilerplate/blob/master/docker-compose.yml)
+- [production.js](https://github.com/mmontes11/apollo-express-mongo-boilerplate/blob/master/src/config/production.js)
+
+2.  `$ docker-compose up -d`

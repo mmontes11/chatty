@@ -1,8 +1,8 @@
-# apollo-express-mongo-boilerplate
+# chatty-server
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Apollo + Express + MongoDB boilerplate project.
+Apollo + Express + MongoDB chat server.
 
 ### Development
 
@@ -20,7 +20,7 @@ $ npm run lint
 
 ```bash
 $ npm run build 
-$ docker build -t apollo-express-mongo-boilerplate .
+$ docker build -t chatty-server .
 ```
 
 ### DockerHub

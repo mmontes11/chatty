@@ -1,7 +1,7 @@
 {
   "name": "chatty-server",
   "version": "1.0.0",
-  "description": "Apollo + Express + MongoDB boilerplate project",
+  "description": "Apollo + Express + MongoDB chat server",
   "author": "Martín Montes <martin11lrx@gmail.com>",
   "license": "MIT",
   "main": "index.js",
@@ -32,7 +32,7 @@
     "mongo",
     "mongodb",
     "mongoose",
-    "boilerplate"
+    "chat"
   ],
   "dependencies": {
     "apollo-server": "^2.6.9",

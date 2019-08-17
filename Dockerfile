@@ -1,6 +1,6 @@
 FROM node:8
 
-ENV WORKDIR /usr/src/apollo-express-mongo-boilerplate
+ENV WORKDIR /usr/src/chatty-server
 
 RUN mkdir ${WORKDIR}
 

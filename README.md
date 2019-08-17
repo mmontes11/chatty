@@ -25,12 +25,12 @@ $ docker build -t chatty-server .
 
 ### DockerHub
 
-Image available on [Docker Hub](https://hub.docker.com/r/mmontes11/apollo-express-mongo-boilerplate/)
+Image available on [Docker Hub](https://hub.docker.com/r/mmontes11/chatty-server/)
 
 ### Production
 
 1. Create a `.env` with the variables used below:
-- [docker-compose.yml](https://github.com/mmontes11/apollo-express-mongo-boilerplate/blob/master/docker-compose.yml)
-- [production.js](https://github.com/mmontes11/apollo-express-mongo-boilerplate/blob/master/src/config/production.js)
+- [docker-compose.yml](https://github.com/mmontes11/chatty-server/blob/master/docker-compose.yml)
+- [production.js](https://github.com/mmontes11/chatty-server/blob/master/src/config/production.js)
 
 2.  `$ docker-compose up -d`

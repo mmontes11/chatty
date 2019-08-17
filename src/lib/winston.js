@@ -9,7 +9,7 @@ const logger = createLogger({
   transports: [
     new transports.Console(),
     new transports.File({
-      filename: "log-apollo-express-mongo-boilerplate.log",
+      filename: "log-chatty-server.log",
     }),
   ],
 });

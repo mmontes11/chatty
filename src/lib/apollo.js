@@ -4,16 +4,21 @@ import schema from "../schema";
 import resolvers from "../resolvers";
 import models from "../models";
 import config from "../config";
+import { getAuthorizationToken } from "../helpers/token";
 
 const getMe = async req => {
-  const token = req.headers["x-token"];
-  if (!token) {
+  const authorization = getAuthorizationToken(req);
+  if (!authorization) {
+    return null;
+  }
+  const { type, token } = authorization;
+  if (type.toLowerCase() !== "bearer" || !token) {
     return null;
   }
   try {
     return jwt.verify(token, config.jwtSecret);
   } catch (e) {
-    throw new AuthenticationError("Your session expired. Log in again");
+    throw new AuthenticationError("Invalid credentials");
   }
 };
 

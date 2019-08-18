@@ -9,10 +9,10 @@ export default {
     user: async (parent, { id }, { models: { User } }) => User.findById(id),
   },
   Mutation: {
-    signUp: async (parent, { username, email, password }, { models: { User }, secret }) => {
+    signUp: async (parent, { email, username, password }, { models: { User }, secret }) => {
       const user = await User.create({
-        username,
         email,
+        username,
         password,
       });
       const token = createToken(user, secret, TOKEN_EXPIRATION);

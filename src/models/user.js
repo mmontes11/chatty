@@ -1,6 +1,7 @@
 import isEmail from "validator/lib/isEmail";
 import bcrypt from "bcrypt";
 import mongoose from "../lib/mongoose";
+import { PASSWORD_REGEX } from "../constants";
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -17,8 +18,7 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    minlength: 7,
-    maxlength: 42,
+    validate: PASSWORD_REGEX,
   },
 });
 

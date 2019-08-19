@@ -1,11 +1,11 @@
 import { combineResolvers } from "graphql-resolvers";
-import { isAuth, isMessageOwner } from "./authorization";
-import { toCursorHash, fromCursorHash } from "../helpers/cursor";
+import { isAuth, isMessageOwner } from "./auth";
+import { encode, decode } from "../helpers/base64";
 
 export default {
   Query: {
     messages: async (parent, { cursor, limit = 10 }, { models: { Message } }) => {
-      const cursorOpts = cursor ? { createdAt: { $lt: fromCursorHash(cursor) } } : {};
+      const cursorOpts = cursor ? { createdAt: { $lt: decode(cursor) } } : {};
       const messages = await Message.find(cursorOpts, null, {
         sort: { createdAt: -1 },
         limit: limit + 1,
@@ -13,7 +13,7 @@ export default {
       const totalCount = await Message.count();
       const hasNextPage = messages.length > limit;
       const edges = hasNextPage ? messages.slice(0, -1) : messages;
-      const endCursor = toCursorHash(edges[edges.length - 1].createdAt.toString());
+      const endCursor = encode(edges[edges.length - 1].createdAt.toString());
       return {
         edges,
         pageInfo: {

@@ -1,5 +1,7 @@
 import { AuthenticationError, UserInputError } from "apollo-server";
-import { createToken } from "../helpers/token";
+import { combineResolvers } from "graphql-resolvers";
+import { createToken } from "../helpers/auth";
+import { isBasicAuth } from "./auth";
 import { TOKEN_EXPIRATION } from "../constants";
 
 export default {
@@ -18,6 +20,7 @@ export default {
       const token = createToken(user, secret, TOKEN_EXPIRATION);
       return { token };
     },
+    createUser: combineResolvers(isBasicAuth, async () => true),
     login: async (parent, { login, password }, { models: { User }, secret }) => {
       const user = await User.findByLogin(login);
       if (!user) {

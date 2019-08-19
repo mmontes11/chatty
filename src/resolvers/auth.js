@@ -3,6 +3,9 @@ import { combineResolvers, skip } from "graphql-resolvers";
 
 export const isAuth = (parent, args, { me }) => (me ? skip : new ForbiddenError("Unauthorized"));
 
+export const isBasicAuth = (parent, args, { isBasicAuth: basicAuth }) =>
+  basicAuth ? skip : new ForbiddenError("Unauthorized");
+
 export const isMessageOwner = combineResolvers(isAuth, async (parent, { id }, { models: { Message }, me }) => {
   const message = await Message.findById(id);
   if (!message) {

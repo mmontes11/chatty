@@ -3,5 +3,8 @@ export default {
   nodePort: process.env.NODE_PORT,
   mongoUrl: `${process.env.MONGO_URL}`,
   jwtSecret: process.env.JWT_SECRET,
+  basicAuth: {
+    [`${process.env.BASIC_AUTH_USER}`]: `${process.env.BASIC_AUTH_PASSWORD}`,
+  },
   debug: process.env.DEBUG,
 };

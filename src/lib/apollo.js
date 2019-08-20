@@ -2,6 +2,7 @@ import { ApolloServer } from "apollo-server-express";
 import schema from "../schema";
 import resolvers from "../resolvers";
 import models from "../models";
+import loaders from "../loaders";
 import config from "../config";
 import { getCurrentUser, isBasicAuth } from "../helpers/auth";
 
@@ -13,6 +14,7 @@ const server = new ApolloServer({
     const basicAuth = isBasicAuth(req);
     return {
       models,
+      loaders,
       me,
       secret: config.jwtSecret,
       isBasicAuth: basicAuth,

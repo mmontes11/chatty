@@ -42,6 +42,6 @@ export default {
     }),
   },
   Message: {
-    user: async ({ userId }, args, { models: { User } }) => User.findById(userId),
+    user: async ({ userId }, args, { loaders: { user } }) => user.load(userId),
   },
 };

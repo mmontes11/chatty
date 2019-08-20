@@ -1,7 +1,7 @@
 import isEmail from "validator/lib/isEmail";
 import bcrypt from "bcrypt";
 import mongoose from "../lib/mongoose";
-import { PASSWORD_REGEX, ROLE_USER } from "../constants";
+import { PASSWORD_REGEX, ROLE_USER, ROLE_ADMIN } from "../constants";
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -33,6 +33,10 @@ userSchema.statics.findByLogin = async function findByLogin(login) {
     user = await this.findOne({ email: login });
   }
   return user;
+};
+
+userSchema.statics.isAdmin = function isAdmin(user) {
+  return user.roles.includes(ROLE_ADMIN);
 };
 
 userSchema.pre("save", async function preSave() {

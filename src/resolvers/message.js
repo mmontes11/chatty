@@ -4,7 +4,7 @@ import { encode, decode } from "../helpers/base64";
 
 export default {
   Query: {
-    messages: async (parent, { cursor, limit = 10 }, { models: { Message } }) => {
+    messages: combineResolvers(isAuth, async (parent, { cursor, limit = 10 }, { models: { Message } }) => {
       const cursorOpts = cursor ? { createdAt: { $lt: decode(cursor) } } : {};
       const messages = await Message.find(cursorOpts, null, {
         sort: { createdAt: -1 },
@@ -22,8 +22,8 @@ export default {
         },
         totalCount,
       };
-    },
-    message: async (parent, { id }, { models: { Message } }) => Message.findById(id),
+    }),
+    message: combineResolvers(isAuth, async (parent, { id }, { models: { Message } }) => Message.findById(id)),
   },
   Mutation: {
     createMessage: combineResolvers(isAuth, async (parent, { text }, { models: { Message }, me: { id } }) =>

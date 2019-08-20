@@ -18,6 +18,7 @@ export default gql`
     username: String!
     email: String!
     messages: [Message!]
+    roles: [String!]
   }
 
   type Token {

@@ -20,7 +20,18 @@ export default {
       const token = createToken(user, secret, TOKEN_EXPIRATION);
       return { token };
     },
-    createUser: combineResolvers(isBasicAuth, async () => true),
+    createUser: combineResolvers(
+      isBasicAuth,
+      async (parent, { email, username, password, roles }, { models: { User } }) => {
+        await User.create({
+          email,
+          username,
+          password,
+          roles,
+        });
+        return true;
+      },
+    ),
     login: async (parent, { login, password }, { models: { User }, secret }) => {
       const user = await User.findByLogin(login);
       if (!user) {

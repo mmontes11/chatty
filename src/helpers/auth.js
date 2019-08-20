@@ -4,8 +4,8 @@ import { decode } from "../helpers/base64";
 import config from "../config";
 
 export const createToken = async (user, secret, expiresIn) => {
-  const { id, email, username } = user;
-  return jwt.sign({ id, email, username }, secret, { expiresIn });
+  const { id, email, username, roles } = user;
+  return jwt.sign({ id, email, username, roles }, secret, { expiresIn });
 };
 
 const getAuthorizationToken = req => {

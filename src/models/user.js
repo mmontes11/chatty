@@ -1,7 +1,7 @@
 import isEmail from "validator/lib/isEmail";
 import bcrypt from "bcrypt";
 import mongoose from "../lib/mongoose";
-import { PASSWORD_REGEX } from "../constants";
+import { PASSWORD_REGEX, ROLE_USER } from "../constants";
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -19,6 +19,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     validate: PASSWORD_REGEX,
+  },
+  roles: {
+    type: [String],
+    required: true,
+    default: [ROLE_USER],
   },
 });
 

@@ -18,7 +18,8 @@ export default {
         password,
       });
       const token = createToken(user, secret, TOKEN_EXPIRATION);
-      return { token };
+      const isAdmin = User.isAdmin(user);
+      return { token, isAdmin };
     },
     createUser: combineResolvers(
       isBasicAuth,
@@ -42,10 +43,12 @@ export default {
         throw new AuthenticationError("Invalid password");
       }
       const token = createToken(user, secret, TOKEN_EXPIRATION);
-      return { token };
+      const isAdmin = User.isAdmin(user);
+      return { token, isAdmin };
     },
   },
   User: {
     messages: async ({ id }, args, { models: { Message } }) => Message.find({ userId: id }),
+    isAdmin: async (parent, args, { models: { User } }) => User.isAdmin(parent),
   },
 };

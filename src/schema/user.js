@@ -8,9 +8,9 @@ export default gql`
   }
 
   extend type Mutation {
-    signUp(email: String!, username: String!, password: String): Token!
+    signUp(email: String!, username: String!, password: String): AuthResponse!
     createUser(email: String!, username: String!, password: String!, roles: [String!]): Boolean!
-    login(login: String!, password: String!): Token!
+    login(login: String!, password: String!): AuthResponse!
   }
 
   type User {
@@ -19,9 +19,11 @@ export default gql`
     email: String!
     messages: [Message!]
     roles: [String!]
+    isAdmin: Boolean!
   }
 
-  type Token {
+  type AuthResponse {
     token: String!
+    isAdmin: Boolean!
   }
 `;

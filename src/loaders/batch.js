@@ -4,5 +4,5 @@ export const createBatch = Entity => async keys => {
       $in: keys,
     },
   });
-  return keys.map(key => result.find(el => key.equals(el._id)));
+  return keys.map(key => result.find(el => key.equals(el.id)));
 };

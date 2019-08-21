@@ -13,7 +13,7 @@ export default {
         }
         return Room.create({
           name,
-          categoryId: category._id,
+          categoryId: category.id,
           createdBy: id,
         });
       },

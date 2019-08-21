@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { AuthenticationError } from "apollo-server-express";
+import { AuthenticationError } from "apollo-server";
 import { decode } from "../helpers/base64";
 import config from "../config";
 
@@ -33,7 +33,7 @@ export const getCurrentUser = req => {
   try {
     return jwt.verify(token, config.jwtSecret);
   } catch (e) {
-    throw new AuthenticationError("Invalid credentials");
+    throw new AuthenticationError("Authentication error");
   }
 };
 

@@ -15,6 +15,7 @@ export default gql`
     id: ID!
     text: String!
     createdBy: User!
+    createdAt: String!
   }
 
   type MessageConnection {

@@ -48,7 +48,7 @@ export default {
     },
   },
   User: {
-    messages: async ({ id }, args, { models: { Message } }) => Message.find({ userId: id }),
+    messages: async ({ id }, args, { models: { Message } }) => Message.find({ createdBy: id }),
     isAdmin: async (parent, args, { models: { User } }) => User.isAdmin(parent),
   },
 };

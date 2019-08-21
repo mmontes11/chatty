@@ -43,5 +43,6 @@ export default {
   },
   Message: {
     createdBy: async ({ createdBy }, args, { loaders: { user } }) => user.load(createdBy),
+    createdAt: ({ createdAt }) => createdAt.toISOString(),
   },
 };

@@ -1,7 +1,11 @@
 import DataLoader from "dataloader";
-import { batchUsers } from "./user";
+import { createBatch } from "./batch";
 import models from "../models";
 
-const user = new DataLoader(keys => batchUsers(keys, models));
+const { User, Category } = models;
+const batchUsers = createBatch(User);
+const batchCategories = createBatch(Category);
+const user = new DataLoader(batchUsers);
+const category = new DataLoader(batchCategories);
 
-export default { user };
+export default { user, category };

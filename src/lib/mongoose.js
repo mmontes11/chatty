@@ -2,6 +2,8 @@ import mongoose from "mongoose";
 import config from "../config";
 import logger from "../utils/logger";
 
+mongoose.set("useCreateIndex", true);
+
 if (config.debug) {
   mongoose.set("debug", (collectionName, method, query, result) => {
     logger.logInfo(`MongoDB query: ${collectionName}.${method}(${JSON.stringify(query)})`);

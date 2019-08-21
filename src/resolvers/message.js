@@ -29,7 +29,7 @@ export default {
     createMessage: combineResolvers(isAuth, async (parent, { text }, { models: { Message }, me: { id } }) =>
       Message.create({
         text,
-        userId: id,
+        createdBy: id,
       }),
     ),
     deleteMessage: combineResolvers(isMessageOwner, async (parent, { id }, { models: { Message } }) => {
@@ -42,6 +42,6 @@ export default {
     }),
   },
   Message: {
-    user: async ({ userId }, args, { loaders: { user } }) => user.load(userId),
+    createdBy: async ({ createdBy }, args, { loaders: { user } }) => user.load(createdBy),
   },
 };

@@ -6,8 +6,8 @@ export default {
   Mutation: {
     createRoom: combineResolvers(
       isAdmin,
-      async (parent, { name, category: categoryName }, { me: { id }, models: { Category, Room } }) => {
-        const category = await Category.findOne({ key: categoryName });
+      async (parent, { name, category: key }, { me: { id }, models: { Category, Room } }) => {
+        const category = await Category.findOne({ key });
         if (!category) {
           throw new UserInputError("Category not found");
         }

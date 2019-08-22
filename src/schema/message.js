@@ -7,13 +7,14 @@ export default gql`
   }
 
   extend type Mutation {
-    createMessage(text: String!): Message!
+    createMessage(text: String!, room: String!): Message!
     deleteMessage(id: ID!): Boolean!
   }
 
   type Message {
     id: ID!
     text: String!
+    room: Room!
     createdBy: User!
     createdAt: String!
   }

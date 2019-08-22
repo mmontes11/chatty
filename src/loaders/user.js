@@ -3,7 +3,7 @@ import { createBatch } from "../helpers/batch";
 import models from "../models";
 
 const { User } = models;
-const userCategories = createBatch(User);
-const userLoader = new DataLoader(userCategories);
+const userBatch = createBatch(User);
+const userLoader = new DataLoader(userBatch);
 
 export default userLoader;

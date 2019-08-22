@@ -1,3 +1,4 @@
+import { UserInputError } from "apollo-server";
 import { combineResolvers } from "graphql-resolvers";
 import { isAuth, isMessageOwner } from "./auth";
 
@@ -9,11 +10,19 @@ export default {
     message: combineResolvers(isAuth, async (parent, { id }, { models: { Message } }) => Message.findById(id)),
   },
   Mutation: {
-    createMessage: combineResolvers(isAuth, async (parent, { text }, { models: { Message }, me: { id } }) =>
-      Message.create({
-        text,
-        createdBy: id,
-      }),
+    createMessage: combineResolvers(
+      isAuth,
+      async (parent, { text, room: roomId }, { models: { Message, Room }, me: { id } }) => {
+        const room = await Room.findById(roomId);
+        if (!room) {
+          throw new UserInputError("Room not found");
+        }
+        return Message.create({
+          text,
+          room,
+          createdBy: id,
+        });
+      },
     ),
     deleteMessage: combineResolvers(isMessageOwner, async (parent, { id }, { models: { Message } }) => {
       const message = await Message.findById(id);
@@ -25,6 +34,7 @@ export default {
     }),
   },
   Message: {
+    room: async ({ room: roomId }, args, { loaders: { room } }) => room.load(roomId),
     createdBy: async ({ createdBy }, args, { loaders: { user } }) => user.load(createdBy),
     createdAt: ({ createdAt }) => createdAt.toISOString(),
   },

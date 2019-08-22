@@ -3,7 +3,7 @@ import { isAuth, isMessageOwner } from "./auth";
 
 export default {
   Query: {
-    messages: combineResolvers(isAuth, async (parent, { cursor, limit = 10 }, { paginators: { message } }) =>
+    messages: combineResolvers(isAuth, async (parent, { page: { cursor, limit } }, { paginators: { message } }) =>
       message(cursor, limit),
     ),
     message: combineResolvers(isAuth, async (parent, { id }, { models: { Message } }) => Message.findById(id)),

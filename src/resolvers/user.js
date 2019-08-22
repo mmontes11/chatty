@@ -48,7 +48,8 @@ export default {
     },
   },
   User: {
-    messages: async ({ id }, args, { models: { Message } }) => Message.find({ createdBy: id }),
+    messages: async ({ id }, { page: { cursor, limit } }, { paginators: { message } }) =>
+      message(cursor, limit, { createdBy: id }),
     isAdmin: async (parent, args, { models: { User } }) => User.isAdmin(parent),
   },
 };

@@ -6,7 +6,7 @@ export const createCursorPaginator = (Entity, sortField) => async (cursor, limit
     sort: { [sortField]: -1 },
     limit: limit + 1,
   });
-  const totalCount = await Entity.count();
+  const totalCount = await Entity.count(filter);
   const hasNextPage = result.length > limit;
   const edges = hasNextPage ? result.slice(0, -1) : result;
   const lastSortField = edges[edges.length - 1][sortField].toString();

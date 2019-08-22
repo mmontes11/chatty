@@ -17,7 +17,7 @@ export default gql`
     id: ID!
     username: String!
     email: String!
-    messages: [Message!]
+    messages(page: PageInput!): PagedResult!
     roles: [String!]
     isAdmin: Boolean!
   }

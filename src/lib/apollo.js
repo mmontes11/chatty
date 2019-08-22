@@ -3,6 +3,7 @@ import schema from "../schema";
 import resolvers from "../resolvers";
 import models from "../models";
 import loaders from "../loaders";
+import paginators from "../paginators";
 import config from "../config";
 import { getCurrentUser, isBasicAuth } from "../helpers/auth";
 
@@ -15,6 +16,7 @@ const server = new ApolloServer({
     return {
       models,
       loaders,
+      paginators,
       me,
       secret: config.jwtSecret,
       isBasicAuth: basicAuth,

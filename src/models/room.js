@@ -6,7 +6,7 @@ const roomSchema = new mongoose.Schema({
     required: true,
     unique: true,
   },
-  categoryId: {
+  category: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Category",
   },

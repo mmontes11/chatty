@@ -13,14 +13,14 @@ export default {
         }
         return Room.create({
           name,
-          categoryId: category.id,
+          category,
           createdBy: id,
         });
       },
     ),
   },
   Room: {
-    category: async ({ categoryId }, args, { loaders: { category } }) => category.load(categoryId),
+    category: async ({ category: categoryId }, args, { loaders: { category } }) => category.load(categoryId),
     createdBy: async ({ createdBy }, args, { loaders: { user } }) => user.load(createdBy),
   },
 };

@@ -2,7 +2,7 @@ import { AuthenticationError, UserInputError } from "apollo-server";
 import { combineResolvers } from "graphql-resolvers";
 import { createToken } from "../helpers/auth";
 import { isBasicAuth } from "./auth";
-import { TOKEN_EXPIRATION } from "../constants";
+import config from "../config";
 
 export default {
   Query: {
@@ -17,7 +17,7 @@ export default {
         username,
         password,
       });
-      const token = createToken(user, secret, TOKEN_EXPIRATION);
+      const token = createToken(user, secret, config.tokenExpiration);
       const isAdmin = User.isAdmin(user);
       return { token, isAdmin };
     },
@@ -42,7 +42,7 @@ export default {
       if (!isValidPassword) {
         throw new AuthenticationError("Invalid password");
       }
-      const token = createToken(user, secret, TOKEN_EXPIRATION);
+      const token = createToken(user, secret, config.tokenExpiration);
       const isAdmin = User.isAdmin(user);
       return { token, isAdmin };
     },

@@ -1,6 +1,10 @@
 import { gql } from "apollo-server-express";
 
 export default gql`
+  extend type Query {
+    rooms: [Room!]
+  }
+
   extend type Mutation {
     createRoom(name: String!, category: String!): Room!
   }

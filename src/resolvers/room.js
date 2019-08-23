@@ -1,8 +1,11 @@
 import { combineResolvers } from "graphql-resolvers";
 import { UserInputError } from "apollo-server";
-import { isAdmin } from "./auth";
+import { isAuth, isAdmin } from "./auth";
 
 export default {
+  Query: {
+    rooms: combineResolvers(isAuth, async (parent, args, { models: { Room } }) => Room.find({})),
+  },
   Mutation: {
     createRoom: combineResolvers(
       isAdmin,

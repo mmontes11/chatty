@@ -3,6 +3,7 @@ import { gql } from "apollo-server-express";
 export default gql`
   extend type Query {
     rooms: [Room!]
+    room(id: ID!): Room!
   }
 
   extend type Mutation {
@@ -14,5 +15,6 @@ export default gql`
     name: String!
     category: Category!
     createdBy: User!
+    messages(page: PageInput!): PagedResult!
   }
 `;

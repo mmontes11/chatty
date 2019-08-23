@@ -5,6 +5,7 @@ import { isAuth, isAdmin } from "./auth";
 export default {
   Query: {
     rooms: combineResolvers(isAuth, async (parent, args, { models: { Room } }) => Room.find({})),
+    room: combineResolvers(isAuth, async (parend, { id }, { models: { Room } }) => Room.findById(id)),
   },
   Mutation: {
     createRoom: combineResolvers(
@@ -28,5 +29,7 @@ export default {
   Room: {
     category: async ({ category: categoryId }, args, { loaders: { category } }) => category.load(categoryId),
     createdBy: async ({ createdBy }, args, { loaders: { user } }) => user.load(createdBy),
+    messages: async ({ id }, { page: { cursor, limit } }, { paginators: { message } }) =>
+      message(cursor, limit, { room: id }),
   },
 };

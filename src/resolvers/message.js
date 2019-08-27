@@ -1,6 +1,7 @@
 import { UserInputError } from "apollo-server";
 import { combineResolvers } from "graphql-resolvers";
 import { isAuth, isMessageOwner } from "./auth";
+import { getTopics } from "../helpers/topic";
 
 export default {
   Query: {
@@ -17,8 +18,10 @@ export default {
         if (!room) {
           throw new UserInputError("Room not found");
         }
+        const topics = getTopics(text);
         return Message.create({
           text,
+          topics,
           room,
           createdBy: id,
         });

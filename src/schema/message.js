@@ -14,6 +14,7 @@ export default gql`
   type Message {
     id: ID!
     text: String!
+    topics: [String!]
     room: Room!
     createdBy: User!
     createdAt: String!

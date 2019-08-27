@@ -6,6 +6,12 @@ const messageSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    topics: [
+      {
+        type: String,
+        required: true,
+      },
+    ],
     room: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Room",

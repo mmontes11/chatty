@@ -1,7 +1,7 @@
 import { gql } from "apollo-server-express";
 
 export default gql`
-  union Pageable = Message
+  union Pageable = Message | Topic
 
   input PageInput {
     cursor: String

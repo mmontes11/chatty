@@ -9,7 +9,7 @@ const logger = createLogger({
   transports: [
     new transports.Console(),
     new transports.File({
-      filename: "log-chatty-server.log",
+      filename: "log-back.log",
     }),
   ],
 });

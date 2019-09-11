@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/app renders 1`] = `
+<Provider
+  store={
+    Object {
+      "clearActions": [Function],
+      "dispatch": [Function],
+      "getActions": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+    }
+  }
+>
+  <IntlProvider
+    store={
+      Object {
+        "clearActions": [Function],
+        "dispatch": [Function],
+        "getActions": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+      }
+    }
+  >
+    <IntlProvider
+      key="en"
+      locale="en"
+      messages={
+        Object {
+          "Book now!": "Book now!",
+          "Contact us": "Contact us",
+          "Error": "Error loading home cards",
+          "How we work": "How we work",
+          "More details": "More details",
+          "The company": "The company",
+          "front": "front",
+        }
+      }
+    >
+      <App>
+        <div
+          className="container"
+        >
+          <Connect(Messages)>
+            <Messages
+              getMessages={[Function]}
+              sendMessage={[Function]}
+            />
+          </Connect(Messages)>
+        </div>
+      </App>
+    </IntlProvider>
+  </IntlProvider>
+</Provider>
+`;

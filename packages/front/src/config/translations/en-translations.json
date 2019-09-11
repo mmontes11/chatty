@@ -1,0 +1,13 @@
+{
+  "Chatty": "Chatty",
+  "Email": "Email",
+  "Email required": "Email required",
+  "Invalid email": "Invalid email",
+  "Invalid password": "Invalid password. It must contain a lowercase and uppercase letter, a symbol and 8 characters",
+  "Login": "Login",
+  "Password": "Password",
+  "Password required": "Password required",
+  "Username": "Username",
+  "Username required": "Username required",
+  "Sign Up": "Sign Up"
+}

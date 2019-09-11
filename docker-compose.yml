@@ -1,14 +1,26 @@
 version: '2'
 services:
-  server:
-    build: .
-    env_file: .env
-    ports:
-      - "${NODE_PORT}:${NODE_PORT}"
-    links:
-      - mongo
   mongo:
     image: mongo
-    env_file: .env
     expose:
       - ${MONGO_PORT}
+  back:
+    build: packages/back
+    env_file: .env
+    expose:
+      - "${NODE_PORT}"
+    links:
+      - mongo
+  front:
+    build: packages/front
+    expose:
+      - "${FRONT_PORT}"
+    links: 
+      - back
+  nginx:
+    build: nginx
+    ports:
+      - "${NGINX_HTTP_EXTERNAL_PORT}:${NGINX_HTTP_INTERNAL_PORT}"
+    links:
+      - front
+

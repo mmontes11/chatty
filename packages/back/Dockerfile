@@ -1,6 +1,6 @@
 FROM node:8
 
-ENV WORKDIR /usr/src/chatty-server
+ENV WORKDIR /usr/src/back
 
 RUN mkdir ${WORKDIR}
 

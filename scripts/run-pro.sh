@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 npm run build
-docker-compose -f docker-compose.mongo.yml -f docker-compose.yml up -d --build
+docker-compose -f docker-compose.yml -f docker-compose.mongo.yml up -d --build

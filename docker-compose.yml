@@ -1,5 +1,11 @@
-version: '2'
+version: '3'
 services:
+  mongo:
+    image: mongo
+    volumes:
+      - './data:/data/db'
+    ports:
+      - ${MONGO_PORT}:${MONGO_PORT}
   back:
     build: packages/back
     env_file: .env
@@ -16,7 +22,7 @@ services:
   nginx:
     build: nginx
     ports:
-      - "${NGINX_HTTP_EXTERNAL_PORT}:${NGINX_HTTP_INTERNAL_PORT}"
+      - "${NGINX_PORT}:${NGINX_PORT}"
     links:
       - front
 

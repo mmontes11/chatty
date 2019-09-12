@@ -2,7 +2,6 @@ const webpack = require("webpack");
 const path = require("path");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-require("dotenv").config();
 
 const inProduction = process.env.NODE_ENV === "production";
 
@@ -67,7 +66,7 @@ module.exports = {
       filename: "style.css",
     }),
     new webpack.EnvironmentPlugin({
-      REACT_APOLLO_SERVER_URL: "http://localhost:8080/graphql",
+      REACT_APOLLO_SERVER_URL: inProduction ? "/graphql" : "http://localhost:8080/graphql",
     }),
   ],
   node: {

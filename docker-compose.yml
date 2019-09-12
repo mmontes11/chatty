@@ -1,9 +1,5 @@
 version: '2'
 services:
-  mongo:
-    image: mongo
-    expose:
-      - ${MONGO_PORT}
   back:
     build: packages/back
     env_file: .env

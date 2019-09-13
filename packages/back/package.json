@@ -50,7 +50,7 @@
     "graphql": "^14.4.2",
     "graphql-resolvers": "^0.3.3",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.2.0",
+    "mongoose": "^5.7.0",
     "validator": "^11.1.0",
     "winston": "^3.0.0"
   },

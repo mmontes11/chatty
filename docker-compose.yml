@@ -1,28 +1,28 @@
 version: '3'
 services:
-  mongo:
-    image: mongo
-    volumes:
-      - './data:/data/db'
+  nginx:
+    build: nginx
     ports:
-      - ${MONGO_PORT}:${MONGO_PORT}
+      - "${NGINX_PORT}:${NGINX_PORT}"
+    depends_on:
+      - front
+    restart: always
+  front:
+    build: packages/front
+    expose:
+      - "${FRONT_PORT}"
+    depends_on: 
+      - back
+    restart: always    
   back:
     build: packages/back
     env_file: .env
     expose:
       - "${NODE_PORT}"
-    links:
+    depends_on:
       - mongo
-  front:
-    build: packages/front
-    expose:
-      - "${FRONT_PORT}"
-    links: 
-      - back
-  nginx:
-    build: nginx
-    ports:
-      - "${NGINX_PORT}:${NGINX_PORT}"
-    links:
-      - front
+    restart: always
+    
+  
+
 

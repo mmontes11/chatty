@@ -18,7 +18,10 @@ services:
       - back
     restart: always    
   back:
-    build: packages/back
+    build: 
+      context: packages/back
+      args:
+        WAIT_FOR_IT: "mongo:${MONGO_PORT}"
     env_file: .env
     expose:
       - "${NODE_PORT}"

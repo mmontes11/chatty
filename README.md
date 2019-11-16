@@ -3,4 +3,4 @@
 
 Apollo + React + Node + MongoDB chat platform
 
-WIP
+**WIP** 🚧

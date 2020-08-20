@@ -37,7 +37,7 @@
   "dependencies": {
     "apollo-server": "^2.6.9",
     "apollo-server-express": "^2.6.9",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "bluebird": "^3.4.7",
     "body-parser": "^1.18.3",
     "cors": "2.8.1",

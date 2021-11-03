@@ -51,7 +51,7 @@
     "graphql-resolvers": "^0.3.3",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.7.0",
-    "validator": "^11.1.0",
+    "validator": "^13.7.0",
     "winston": "^3.0.0"
   },
   "devDependencies": {
